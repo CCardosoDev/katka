@@ -1,6 +1,6 @@
 import './TopMenu.css';
 
-import { Button, Container, Dropdown, Header, Image, Menu, Segment } from 'semantic-ui-react';
+import { Button, Container, Dropdown, Header, Icon, Image, Menu, Segment } from 'semantic-ui-react';
 import { Link, NavLink } from 'react-router-dom';
 import React, { Component } from 'react';
 

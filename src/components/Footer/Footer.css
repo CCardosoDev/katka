@@ -1,0 +1,10 @@
+.ui.footer.form-page {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.ui.vertical.segment:last-child {
+    background-color: #f7f7f7;
+    color: black;
+}
