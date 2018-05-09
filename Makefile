@@ -1,3 +1,6 @@
+DOCKER_HUB_NAMESPACE=kpnnv
+REPOSITORY=katka
+
 # ********** Local dependencies **********
 clean:
 	rm -rf node_modules
@@ -14,6 +17,15 @@ docker/build/test_image:
 docker/remove/test_image:
 	docker rmi katka-test
 
+docker/build/%:
+	docker build -t $(DOCKER_HUB_NAMESPACE)/$(REPOSITORY):$* .
+
+docker/push:
+	docker push $(DOCKER_HUB_NAMESPACE)/$(REPOSITORY)
+
+docker/run:
+	docker run -ti --rm -p 5000:5000 $(DOCKER_HUB_NAMESPACE)/$(REPOSITORY)
+
 
 # ********** Testes **********
 
@@ -27,7 +39,7 @@ test_local:
 
 # ********** Run **********
 
-run_local:
+start_dev_app:
 	npm start
 
 build:
