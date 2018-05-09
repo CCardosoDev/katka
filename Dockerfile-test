@@ -1,5 +1,5 @@
 # Extending image
-FROM node:carbon
+FROM node:8.11.1
 
 # Create app directory
 RUN mkdir /app
