@@ -1,0 +1,9 @@
+.fill-page {
+    padding-bottom:60px
+}
+
+#root, #main-container {
+    height: 100%;
+    min-height: 100%;
+    position: relative;
+}
