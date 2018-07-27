@@ -17,13 +17,16 @@ docker/build/test_image:
 docker/remove/test_image:
 	docker rmi katka-test
 
+docker/build:
+	docker build -t $(DOCKER_HUB_NAMESPACE)/$(REPOSITORY) .
+
 docker/build/%:
 	docker build -t $(DOCKER_HUB_NAMESPACE)/$(REPOSITORY):$* .
 
-docker/push:
-	docker push $(DOCKER_HUB_NAMESPACE)/$(REPOSITORY)
+docker/push/%:
+	docker push $(DOCKER_HUB_NAMESPACE)/$(REPOSITORY):$*
 
-docker/run:
+docker/run: docker/build
 	docker run -ti --rm -p 5000:5000 $(DOCKER_HUB_NAMESPACE)/$(REPOSITORY)
 
 
@@ -39,7 +42,7 @@ test_local:
 
 # ********** Run **********
 
-start_dev_app:
+start_dev_server:
 	npm start
 
 build:
