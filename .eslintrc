@@ -36,8 +36,5 @@
             }
         ],
         "sort-imports": "error"
-    },
-    "overrides": {
-        "files": "src/**/*.jsx"
     }
 }

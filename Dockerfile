@@ -21,8 +21,15 @@ RUN npm run build
 # Install `serve` to run the application
 RUN npm install -g serve
 
-# Start the node server
-CMD serve -s build
+# All environments have NODE_ENV as production
+# (options are development, test and production)
+ENV NODE_ENV=production
+
+# env configuration should land in build folder
+ENTRYPOINT ["bash", "entrypoint.sh"]
 
 # The port where katka will be running (default for `serve`)
 EXPOSE 5000
+
+# Start the node server
+CMD ["serve", "-s", "build"]
