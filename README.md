@@ -1,8 +1,16 @@
 # Katka
 
-Frontend for Katka release orchestrator.
+Katka is an UI which enables the orchestrate of the whole development process from the moment
+of Jira ticket creation up to when the feature is available, not forgetting it's monitoring afterwards.
 
-## Dependencies
+## Clone
+You can clone this repository on: https://github.com/kpn/katka.git
+
+## Stack
+
+Katka is build on top of React 16.4.
+
+### Dependencies
 * Node.js 8
 * npm
 * React 16.3.2
@@ -11,6 +19,14 @@ Frontend for Katka release orchestrator.
 * eslint
 * Babel
 * Webpack
+
+## Integrations:
+* Sentry for error logging
+To configure Sentry Katka uses `REACT_APP_SENTRY_DSN` environment variable.
+To expose it in Linux systems:
+```shell
+$ export REACT_APP_SENTRY_DSN=https://<key>@sentry.domain.name.com/<project>
+```
 
 ## Run tests locally
 
@@ -28,7 +44,7 @@ Frontend for Katka release orchestrator.
 ## Run locally
 
 ```shell
-    $ make run_local
+    $ make start_dev_server
 ```
 
 ## Build application
@@ -36,3 +52,20 @@ Frontend for Katka release orchestrator.
 ```shell
     $ make build
 ```
+
+## Contributing
+
+### Workflow
+1. Fork this repository
+2. Clone your fork
+3. Create and test your changes
+4. Create a pull-request
+5. Wait for review and approval from the repository collaborators
+
+## Versioning
+
+We use SemVer 2 for versioning. For the versions available, see the tags on this
+repository.
+
+## Authors
+* *KPN Technium DevSupport* - devsupport@kpn.com

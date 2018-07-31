@@ -8,6 +8,11 @@ import Footer from './components/Footer';
 import Home from './components/Home';
 import Pipelines from './components/Pipelines';
 import TopMenu from './components/TopMenu';
+import { configureSentry } from './utils'
+
+// configure Sentry
+const env = window.katkaEnv
+configureSentry(env)
 
 class App extends Component {
   render() {
