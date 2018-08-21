@@ -1,5 +1,5 @@
 # Full version to make sure all developers are running the same version
-FROM node:8.11.1
+FROM node:8.11
 
 # Create app directory
 RUN mkdir /app
@@ -9,14 +9,16 @@ WORKDIR /app
 ENV NPM_CONFIG_LOGLEVEL warn
 ENV PATH /app/node_modules/.bin:$PATH
 
-COPY package.json /app/package.json
-RUN npm install
+COPY package.json package.json
+COPY package-lock.json package-lock.json
+COPY Makefile Makefile
+RUN make install_dependencies
 
 # Copy all local files into the image
 COPY . .
 
 # Build for production
-RUN npm run build
+RUN make build
 
 # Install `serve` to run the application
 RUN npm install -g serve
@@ -25,11 +27,8 @@ RUN npm install -g serve
 # (options are development, test and production)
 ENV NODE_ENV=production
 
-# env configuration should land in build folder
-ENTRYPOINT ["bash", "entrypoint.sh"]
-
 # The port where katka will be running (default for `serve`)
 EXPOSE 5000
 
 # Start the node server
-CMD ["serve", "-s", "build"]
+CMD ["make", "build_env", "run_server"]

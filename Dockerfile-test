@@ -1,5 +1,5 @@
 # Extending image
-FROM node:8.11.1
+FROM node:8.11
 
 # Create app directory
 RUN mkdir /app
@@ -8,8 +8,9 @@ WORKDIR /app
 # Install app dependencies
 COPY package.json .
 COPY package-lock.json .
+COPY Makefile /app/Makefile
 
-RUN npm install
+RUN make install_dependencies
 
 # Bundle app source
 COPY . .

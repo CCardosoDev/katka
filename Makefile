@@ -30,6 +30,11 @@ docker/run: docker/build
 	docker run -ti --rm -p 5000:5000 $(DOCKER_HUB_NAMESPACE)/$(REPOSITORY)
 
 
+# ********** Serve **********
+run_server:
+	serve -s build
+
+
 # ********** Testes **********
 
 test: docker/build/test_image
